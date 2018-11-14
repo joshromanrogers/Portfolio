@@ -8,31 +8,55 @@
     <body>
         <div class="container">
 
-            <div class="topLeft">
-                <h1>roman rogers</h1>
+            <div class="left">
+                <div class="title">
+                    <h1>roman rogers</h1>
+                    <h3>creative developer</h3>
+                </div>
+                <div class="work">
+                    <p>
+                        <h3>2019</h3>
+                        <p>
+                            <a href="http://twitter.com/joshromanrogers">?</a>
+                        </p>
+                    </p>
+                    <p>
+                        <h3>2018</h3>
+                        <p>
+                            <a href="#">goldenGai</a> // a-frame
+                        </p>
+                        <p>
+                            <a href="#">genartShop</a> // react
+                        </p>
+                        <p>
+                            <a href="#">genart</a> // collection of generative art
+                        </p>
+                        <p>
+                            <a href="http://createmondrian.com">createMondrian</a> // generative art, js, css grid
+                        </p>
+                        <p>
+                            <a href="#">canvasArt</a> // 
+                        </p>
+                    </p>
+                </div>
+                <div class="contact">
+                    <p>
+                        <a href="http://twitter.com/joshromanrogers">twitter</a>
+                    </p>
+                    <p>
+                        <a href="http://github.com/joshromanrogers">github</a>
+                    </p>
+                    <p>
+                        <a href="http://github.com/joshromanrogers">cv</a>
+                    </p>
+                    
+                </div>
             </div>
 
-            <div class="topRight">
-                <h3>creative developer</h3>
+            <div class="right">
+                <img src="img/gif1.gif" style="width: 100%;">
             </div>
-
-            <div class="middle">
-            picture
-            </div>
-        
-            <div class="bottomLeft">
-                <h3>2018</h3>
-                <p>asdfdsafasfdasdfafs</p>
-                <p>asdfdsafasfdasdfafs</p>
-                <p>asdfdsafasfdasdfafs</p>
-            </div>
-
-            <div class="bottomRight">
-                <a href="http://twitter.com/joshromanrogers">twitter</a>
-                <a href="http://github.com/joshromanrogers">github</a>
-                <p>cv</p>
-            </div>
-
+            
         </div>
     </body>
 </html>
@@ -42,33 +66,44 @@
         display: grid;
         height: 100vh;
         grid-auto-flow: dense;
-        grid-gap: 10px;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 2fr 1.5fr ;
         grid-template-areas:
-            "topLeft        .           topRight   "
-            ".              middle      .          "
-            "bottomLeft     .           bottomRight"
+            "left        right";
+        background-color: #F9ECEC;
     }
 
-    .topLeft {
-        grid-area: topLeft;
+    body {
+        margin: 0px;
     }
 
-    .bottomLeft {
-        grid-area: bottomLeft;
+    .left {
+        grid-area: left;
+        margin-left: 30px;
+        display: grid;
+        grid-template-rows: 0.5fr 1fr 0.5fr;
+        grid-template-areas:
+            "title"
+            "work"
+            "contact";
     }
 
-    .topRight {
-        grid-area: topRight;
+    .right {
+        grid-area: right;
+        align-self: center;
     }
 
-    .middle {
-        grid-area: middle;
+    @media only screen and (max-width: 600px) {
+
+    .container {
+        grid-template-columns: 1fr 0fr;
+        grid-template-areas:
+            "left   right";
     }
 
-    .bottomRight {
-        grid-area: bottomRight;
+    .right {
+        visibility:hidden;
     }
+}
+
 </style>
     
