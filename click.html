@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Click</title>
+</head>
+<body>
+
+    <div class="container"> 
+        <div class="top">
+            <div class="score">0</div>
+        </div>
+
+        <div class="game">
+            <div class="gap 1">1
+            <div class="square"></div>
+            </div>
+            <div class="gap 2">2
+            <div class="square"></div>
+            </div>
+            <div class="gap 3">3
+            <div class="square"></div>
+            </div>
+            <div class="gap 4">4
+            <div class="square"></div>
+            </div>
+            <div class="gap 5">5
+            <div class="square"></div>
+            </div>
+            <div class="gap 6">6
+            <div class="square"></div>
+            </div>
+            <div class="gap 7">7
+            <div class="square"></div>
+            </div>
+            <div class="gap 8">8
+            <div class="square"></div>
+            </div>
+            <div class="gap 9">9
+            <div class="square"></div>
+            </div>
+            <div class="gap 10">10
+            <div class="square"></div>
+            </div>
+            <div class="gap 11">11
+            <div class="square"></div>
+            </div>
+            <div class="gap 12">12
+            <div class="square"></div>
+            </div>
+        </div>
+        <div class="start">
+            <div>
+            <input type="radio" id="1" name="drone" value="huey"
+                    checked>
+            <label for="huey">Huey</label>
+            </div>
+
+            <div>
+            <input type="radio" id="2" name="drone" value="dewey">
+            <label for="dewey">Dewey</label>
+            </div>
+
+            <div>
+            <input type="radio" id="3" name="drone" value="louie">
+            <label for="louie">Louie</label>
+            </div>
+
+            <button onClick="startGame()">|></button>
+        </div>
+
+<script>
+  const gaps = document.querySelectorAll('.gap');
+  const scoreBoard = document.querySelector('.score');
+  const squares = document.querySelectorAll('.square');
+  const new1 = document.getElementById('yes');
+  let lastHole;
+  const easy = document.getElementById("1");
+  const medium = document.getElementById("2");
+  const hard = document.getElementById("3");
+    medium.checked = true;
+
+  let colors = ['#ff0000', '#00ff00'];
+
+  // function that produxes a random amount of time 
+  function randomTime(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+  }
+  
+  // function that chooses a random hole
+  function randomSquare(squares) {
+    const idx = Math.floor(Math.random() * squares.length);
+    const square = squares[idx];
+    if (square === lastHole) {
+      return randomSquare(squares);
+    }
+    lastHole = square;
+    return square;
+  }
+
+
+    function randomColor(square) {
+        let random_color = colors[Math.floor(Math.random() * colors.length)];
+        square.style.backgroundColor = random_color;
+    }
+
+    function removeRandomColor(square) {
+        square.style.backgroundColor = "blue";
+    }
+  // add's squareUp to square and then removes after times up
+    function up() {
+    const time = randomTime(700, 1500);
+    const square = randomSquare(squares);
+    randomColor(square);
+    square.classList.add('squareUp');
+    
+    setTimeout(() => {
+        square.classList.remove('squareUp');
+        removeRandomColor(square);
+      if (!timeUp) up();
+    }, time);
+  }
+
+    // reset score, timeup, run up + timeout functions
+    function startGame() {
+    scoreBoard.textContent = 0;
+    timeUp = false;
+    score = 0;
+    up();
+    setTimeout(() => timeUp = true, 20000)
+  }
+
+    // if the square is large, add 1 to the score, remove 'squareUp', update scoreboard.
+    function hit() {
+    if(!(this.classList.contains("squareUp"))) return; // cheater!
+    score++;
+    this.parentNode.classList.remove('squareUp');
+    scoreBoard.textContent = score;
+  }
+
+  // add 'hit' event listener to all squares onClick
+  squares.forEach(square => square.addEventListener('click', hit));
+
+</script>
+</body>
+</html>
+
+<style>
+
+
+.container {
+        display: grid;
+        grid-auto-flow: dense;
+        grid-template-rows: 1fr 5fr 1fr ;
+        grid-template-areas:
+            "top"
+            "game"
+            "start";
+        height: 100vh;
+
+}
+    }
+
+.top {
+    display: grid;
+
+}
+
+.score {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.game {
+    display: grid;
+    grid-auto-display: dense;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "1  2   3   4"
+    "5  6   7   8"
+    "9  10  11  12"; 
+    justify-items: center;
+    align-items: center;
+}
+
+.start {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.gap {
+    display: grid;
+    grid-auto-display: dense;
+    grid-template-rows: 10fr 1fr;
+    grid-template-areas: 
+    "high"
+    "low";
+}
+
+.square {
+  position: absolute;
+  width:1rem;
+  height:1rem;
+  background-color: blue;
+  transition:all 0.3s;
+}
+
+.squareUp {
+  position: absolute;
+  width:3rem;
+  height:3rem;
+  background-color: red;
+}
+
+</style>
