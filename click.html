@@ -7,6 +7,11 @@
 </head>
 <body>
 
+    <div class="title">
+        <h1><a href="index.html">roman rogers</a></h1>
+        <h3>click</h3>
+    </div>
+
     <div class="container"> 
         <div class="top">
             <div class="score">0</div>
@@ -142,6 +147,49 @@
   // add 'hit' event listener to all squares onClick
   squares.forEach(square => square.addEventListener('click', hit));
 
+  // background
+
+  function buildAtom() {
+    for (var n = 0; n < 50; n++) {
+      var newAtom = document.createElement("div");
+      newAtom.classList.add('atom');
+      newAtom.style.left = Math.random() * 100 + '%';
+      newAtom.style.animationDelay = Math.random() * 20 + 's';
+      newAtom.style.animationDuration = 5 + (Math.random() * 10) + 's';
+      document.getElementById('section1').appendChild(newAtom);
+    }
+  }
+    
+
+  function atomMove(e){
+    
+    // width & height of background
+    const { offsetWidth: width, offsetHeight: height} = section1;
+    // where cursor was
+    let { offsetX: x, offsetY: y} = e;
+    // if what you're hovering over isn't the background, add the difference
+   if (this !== e.target){
+      x = x + e.target.offsetLeft;
+      y = y + e.target.offsetTop;
+    }
+    
+    const xWalk = Math.round((x / width * walk * 1.2) + (walk / 2));
+    const yWalk = Math.round((y / height * walk * 1.2) + (walk / 2));
+
+    console.log(xWalk, yWalk);
+
+     var atoms = document.querySelectorAll('.atom');
+
+
+    for (var z = 0; z < atoms.length; z++){
+       atoms[z].style.marginLeft = `${-xWalk}px`;
+     }
+  }
+
+   buildAtom();
+
+   body.addEventListener('mousemove', atomMove);
+
 </script>
 </body>
 </html>
@@ -164,7 +212,10 @@
 
 .top {
     display: grid;
-
+    grid-auto-flow: dense;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-areas:
+        "left right";
 }
 
 .score {
@@ -215,5 +266,32 @@
   height:3rem;
   background-color: red;
 }
+
+body {
+	animation: changeBg 20s infinite alternate;
+}
+
+@keyframes changeBg {
+	0%{
+		background-color: #093333;
+	}
+
+	25%{
+		background-color: #2F4F4F;
+	}
+
+	50%{
+		background-color: #023A3A;
+	}
+
+	75%{
+		background-color: #093333;
+	}
+
+	100%{
+		background-color: #2F4F4F;
+	}
+}
+
 
 </style>
