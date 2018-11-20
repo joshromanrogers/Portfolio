@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> ~~ rr genart ~~ </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <div class="title">
+                    <h1><a href="index.html">roman rogers</a></h1>
+                    <h3>genart</h3>
+    </div>
+        <div class="container">
+            <div class="left">
+                <div class="art">
+                    <img class="piece" src="./img/green.png"/>
+                </div>
+                <div class="name">nameFunc()Sdsdsdd</div>
+
+                <div class="art">
+                    <img class="piece" src="./img/green.png"/>
+                </div>
+                <div class="name">nameFunc()Sdsdsdd</div>
+            </div>
+            <div class="right">
+                <div class="art">
+                    <img class="piece" src="./img/pink.png"/>
+                </div>
+                <div class="name">nameFunc()S324*ds()sdsdd</div>
+
+                <div class="art">
+                    <img class="piece" src="./img/pink.png"/>
+                </div>
+                <div class="name">nameFunc()S324*ds()sdsdd</div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<style>
+
+    .title {
+        margin-left: 30px;
+    }
+
+    .container {
+        display: grid;
+        grid-auto-flow: dense;
+        grid-template-columns: 1fr 1fr ;
+        grid-template-areas:
+            "left        right";
+    }
+
+    .left {
+        grid-area: left;
+        display: grid;
+        grid-template-columns: 7fr 1fr;
+        grid-template-areas:
+            "art        name";
+    }
+
+    .art {
+        overflow: hidden;
+    }
+
+    .piece {
+        width: 100%;
+    }
+
+    .name {
+        align-self: center;
+        justify-self: left;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+
+    .right {
+        grid-area: right;
+        display: grid;
+        grid-template-columns: 7fr 1fr;
+        grid-template-areas:
+            "art        name";
+    }
+</style>
+    
