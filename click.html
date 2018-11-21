@@ -2,80 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Monda" rel="stylesheet">
   <title>Click</title>
 </head>
 <body>
 
+    <div class="container"> 
+
+
     <div class="title">
         <h1><a href="index.html">roman rogers</a></h1>
-        <h3>click</h3>
     </div>
 
-    <div class="container"> 
         <div class="top">
             <div class="score">0</div>
         </div>
 
         <div class="game">
-            <div class="gap 1">1
+            <div class="gap 1">
             <div class="square"></div>
             </div>
-            <div class="gap 2">2
+            <div class="gap 2">
             <div class="square"></div>
             </div>
-            <div class="gap 3">3
+            <div class="gap 3">
             <div class="square"></div>
             </div>
-            <div class="gap 4">4
+            <div class="gap 4">
             <div class="square"></div>
             </div>
-            <div class="gap 5">5
+            <div class="gap 5">
             <div class="square"></div>
             </div>
-            <div class="gap 6">6
+            <div class="gap 6">
             <div class="square"></div>
             </div>
-            <div class="gap 7">7
+            <div class="gap 7">
             <div class="square"></div>
             </div>
-            <div class="gap 8">8
+            <div class="gap 8">
             <div class="square"></div>
             </div>
-            <div class="gap 9">9
+            <div class="gap 9">
             <div class="square"></div>
             </div>
-            <div class="gap 10">10
+            <div class="gap 10">
             <div class="square"></div>
             </div>
-            <div class="gap 11">11
+            <div class="gap 11">
             <div class="square"></div>
             </div>
-            <div class="gap 12">12
+            <div class="gap 12">
             <div class="square"></div>
             </div>
         </div>
         <div class="start">
-            <div>
-            <input type="radio" id="1" name="drone" value="huey"
-                    checked>
-            <label for="huey">Huey</label>
+            <div class="radio">
+
+              <input type="radio" id="1" name="drone" value="huey"
+                      checked>
+              <label for="huey">I</label>
+              
+              <input type="radio" id="2" name="drone" value="dewey">
+              <label for="dewey">II</label>
+              
+              <input type="radio" id="3" name="drone" value="louie">
+              <label for="louie">III</label>
+
             </div>
 
-            <div>
-            <input type="radio" id="2" name="drone" value="dewey">
-            <label for="dewey">Dewey</label>
+            <div class="button">
+              <button onClick="startGame()">start</button>
             </div>
-
-            <div>
-            <input type="radio" id="3" name="drone" value="louie">
-            <label for="louie">Louie</label>
-            </div>
-
-            <button onClick="startGame()">|></button>
         </div>
 
 <script>
+
+  // click variables
   const gaps = document.querySelectorAll('.gap');
   const scoreBoard = document.querySelector('.score');
   const squares = document.querySelectorAll('.square');
@@ -87,6 +91,13 @@
     medium.checked = true;
 
   let colors = ['#ff0000', '#00ff00'];
+
+  // background variables
+
+  let container = document.getElementsByClassName('container')[0];
+  const walk = 50;
+
+  
 
   // function that produxes a random amount of time 
   function randomTime(min, max) {
@@ -111,7 +122,7 @@
     }
 
     function removeRandomColor(square) {
-        square.style.backgroundColor = "blue";
+        square.style.backgroundColor = "white";
     }
   // add's squareUp to square and then removes after times up
     function up() {
@@ -133,7 +144,7 @@
     timeUp = false;
     score = 0;
     up();
-    setTimeout(() => timeUp = true, 20000)
+    setTimeout(() => timeUp = true, 25000)
   }
 
     // if the square is large, add 1 to the score, remove 'squareUp', update scoreboard.
@@ -149,6 +160,8 @@
 
   // background
 
+  buildAtom();
+
   function buildAtom() {
     for (var n = 0; n < 50; n++) {
       var newAtom = document.createElement("div");
@@ -156,15 +169,14 @@
       newAtom.style.left = Math.random() * 100 + '%';
       newAtom.style.animationDelay = Math.random() * 20 + 's';
       newAtom.style.animationDuration = 5 + (Math.random() * 10) + 's';
-      document.getElementById('section1').appendChild(newAtom);
+      container.appendChild(newAtom);
     }
   }
     
-
   function atomMove(e){
     
     // width & height of background
-    const { offsetWidth: width, offsetHeight: height} = section1;
+    const { offsetWidth: width, offsetHeight: height} = document.getElementsByClassName('container')[0];
     // where cursor was
     let { offsetX: x, offsetY: y} = e;
     // if what you're hovering over isn't the background, add the difference
@@ -173,8 +185,8 @@
       y = y + e.target.offsetTop;
     }
     
-    const xWalk = Math.round((x / width * walk * 1.2) + (walk / 2));
-    const yWalk = Math.round((y / height * walk * 1.2) + (walk / 2));
+    const xWalk = Math.round((x / width * walk * 0.05) + (walk / 2));
+    const yWalk = Math.round((y / height * walk * 0.05) + (walk / 2));
 
     console.log(xWalk, yWalk);
 
@@ -186,9 +198,8 @@
      }
   }
 
-   buildAtom();
 
-   body.addEventListener('mousemove', atomMove);
+   container.addEventListener('mousemove', atomMove);
 
 </script>
 </body>
@@ -196,32 +207,43 @@
 
 <style>
 
+html {
+  font-family: 'Monda', sans-serif
+}
+
+body {
+  height: 100%;
+}
+
 
 .container {
         display: grid;
         grid-auto-flow: dense;
-        grid-template-rows: 1fr 5fr 1fr ;
+        grid-template-rows: 0.25fr 0.25fr 3fr 0.5fr ;
         grid-template-areas:
+            "title"
             "top"
             "game"
             "start";
-        height: 100vh;
+        height: 95vh;
 
 }
     }
 
-.top {
-    display: grid;
-    grid-auto-flow: dense;
-    grid-template-columns: 1fr 1fr ;
-    grid-template-areas:
-        "left right";
+.title {
+  grid-area: title;
 }
 
-.score {
+.top {
     display: grid;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "score";
+}
+
+.score, .square {
+    align-self: center;
+    justify-self: center;
 }
 
 .game {
@@ -241,6 +263,10 @@
     display: grid;
     justify-items: center;
     align-items: center;
+    grid-auto-display: dense;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "radio   button";
 }
 
 .gap {
@@ -253,11 +279,42 @@
 }
 
 .square {
+  border-radius: 50%;
   position: absolute;
   width:1rem;
   height:1rem;
-  background-color: blue;
+  background-color: white;
   transition:all 0.3s;
+  box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+  animation: pulse 2s infinite;
+}
+
+
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+    box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+      box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+      box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+  }
 }
 
 .squareUp {
@@ -265,6 +322,7 @@
   width:3rem;
   height:3rem;
   background-color: red;
+  cursor: pointer;
 }
 
 body {
@@ -290,6 +348,36 @@ body {
 
 	100%{
 		background-color: #2F4F4F;
+	}
+}
+
+/* atom */
+
+.atom {
+	opacity: 0;
+	position: absolute;
+	bottom: 0;
+	width: 1rem;
+	height: 1rem;
+	background-color: white;
+	border-radius: 50%;
+	left: 10%;
+	animation: atomUp 20s infinite;
+}
+
+@keyframes atomUp {
+	0% {
+		opacity: 0;
+		transform: translate(0,0);
+	}
+
+	30% {
+		opacity: 0.8;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translate(0, -100vh) scale(0.2);
 	}
 }
 
