@@ -41,16 +41,12 @@
                     </p>
                 </div>
                 <div class="contact">
+                    <span class="desc"><h3>contact</h3></span>
                     <p>
                         <a href="http://twitter.com/joshromanrogers">twitter</a>
-                    </p>
-                    <p>
                         <a href="http://github.com/joshromanrogers">github</a>
-                    </p>
-                    <p>
                         <a href="http://github.com/joshromanrogers">cv</a>
                     </p>
-                    
                 </div>
             </div>
 
@@ -63,9 +59,14 @@
 </html>
 
 <style>
+
+    html {
+        height: 100%;
+        background-color: #f9ecec;
+    }
     .container {
         display: grid;
-        height: 100vh;
+        height: 100%;
         grid-auto-flow: dense;
         grid-template-columns: 2fr 1.5fr ;
         grid-template-areas:
@@ -77,6 +78,7 @@
 
     body {
         margin: 0px;
+        
     }
 
     .desc {
@@ -84,10 +86,11 @@
     }
 
     .left {
+        height: 100%;
         grid-area: left;
         margin-left: 30px;
         display: grid;
-        grid-template-rows: 0.5fr 1fr 0.5fr;
+        grid-template-rows: 0.5 1 0.5;
         grid-template-areas:
             "title"
             "work"
@@ -97,6 +100,10 @@
     .right {
         grid-area: right;
         align-self: center;
+    }
+
+    .contact {
+        align-self: end;
     }
 
     @media only screen and (max-width: 600px) {
