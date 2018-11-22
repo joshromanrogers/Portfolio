@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> ~~ rr genart ~~ </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Monda" rel="stylesheet">
+    </head>
+    <body>
+    <div class="title">
+                    <h1><a href="index.html">roman rogers</a></h1>
+                    <h3>myanmar</h3>
+                    <a href="photographyAndArt.html">back</a>
+    </div>
+        <div class="container">
+            <div class="left">
+                <div class="art">
+                    <img class="piece" src="./img/myanmar/myanmar1.jpg"/>
+                </div>
+                <div class="name">nameFunc()Sdsdsdd</div>
+
+                <div class="art">
+                    <img class="piece" src="./img/myanmar/myanmar2.jpg"/>
+                </div>
+                <div class="name">nameFunc()Sdsdsdd</div>
+
+                <div class="art">
+                    <img class="piece" src="./img/myanmar/myanmar3.jpg"/>
+                </div>
+                <div class="name">nameFunc()Sdsdsdd</div>
+
+                <div class="art">
+                    <img class="piece" src="./img/myanmar/myanmar4.jpg"/>
+                </div>
+                <div class="name">nameFunc()Sdsdsdd</div>
+
+                
+            </div>
+            <div class="right">
+                <div class="art">
+                    <img class="piece" src="./img/myanmar/myanmar6.jpg"/>
+                </div>
+                <div class="name">nameFunc()Sdsdsdd</div>
+
+                <div class="art">
+                    <img class="piece" src="./img/myanmar/myanmar7.jpg"/>
+                </div>
+                <div class="name">nameFunc()Sdsdsdd</div>
+
+                 <div class="art">
+                    <img class="piece" src="./img/myanmar/myanmar5.jpg"/>
+                </div>
+                <div class="name">nameFunc()Sdsdsdd</div>
+
+                 <div class="art">
+                    <img class="piece" src="./img/myanmar/myanmar10.jpg"/>
+                </div>
+                <div class="name">nameFunc()Sdsdsdd</div>
+
+
+            </div>
+            <p class="contact">
+            <a href="photographyAndArt.html">back</a>
+        </p>
+        </div>
+        
+    </body>
+</html>
+
+<style>
+
+    html {
+        font-family: 'Monda', sans-serif;
+    }
+
+    .title {
+        margin-left: 30px;
+    }
+
+    .container {
+        display: grid;
+        grid-auto-flow: dense;
+        grid-template-columns: 1fr 1fr ;
+        grid-template-areas:
+            "left        right";
+    }
+
+    .left {
+        grid-area: left;
+        display: grid;
+        grid-template-columns: 7fr 1fr;
+        grid-template-areas:
+            "art        name";
+    }
+
+    .art {
+        overflow: hidden;
+    }
+
+    .piece {
+        width: 100%;
+    }
+
+    .name {
+        align-self: center;
+        justify-self: left;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+
+    .right {
+        grid-area: right;
+        display: grid;
+        grid-template-columns: 7fr 1fr;
+        grid-template-areas:
+            "art        name";
+    }
+
+    @media only screen and (max-width: 600px) {
+
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "left"
+            "right";
+    }
+
+
+}
+</style>
