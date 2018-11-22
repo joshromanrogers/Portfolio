@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> ~~ roman rogers ~~ </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Monda" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="left">
+                <div class="title">
+                    <h1><a href="index.html">roman rogers</a></h1>
+                    
+                </div>
+                <div class="work">
+                    
+                    <p>
+                        <span>--  </span><a href="mojoIphone.html"> iphone app</a>
+                    </p>
+                    <p>
+                        <span>--  </span><a href="mojoTablet.html"> tablet app</a>
+                    </p>
+                    <p>
+                        <span>--  </span><a href="mojoGraphics.html"> design/graphics</a>
+                    </p>
+                    <p>
+                        <span>--  </span><a href="mojoGrizzly.html"> client website + branding</a>
+                    </p>
+                    
+                    
+                </div>
+                <p class="contact">
+                        <a href="index.html">back</a>
+                    </p>
+                
+            </div>
+
+        </div>
+    </body>
+</html>
+
+<style>
+
+    html {
+        height: 100%;
+        background-color: #f9ecec;
+        font-family: 'Monda', sans-serif;
+    }
+
+    .container {
+        display: grid;
+        height: 100%;
+        grid-auto-flow: dense;
+        grid-template-columns: 2fr 1.5fr ;
+        grid-template-areas:
+            "left        right";
+        background-color: #F9ECEC;
+        color: #0f0f0f;
+    }
+
+    body {
+        margin: 0px;
+        
+    }
+
+    .desc {
+        color: #3c3838;
+    }
+
+    .left {
+        height: 100%;
+        grid-area: left;
+        margin-left: 30px;
+        display: grid;
+        grid-template-rows: 0.5 1 0.5;
+        grid-template-areas:
+            "title"
+            "work"
+            "contact";
+    }
+
+    .right {
+        grid-area: right;
+        align-self: center;
+    }
+
+    .contact {
+        align-self: end;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+    .container {
+        grid-template-columns: 1fr 0fr;
+        grid-template-areas:
+            "left   right";
+    }
+
+    .right {
+        visibility:hidden;
+    }
+}
+
+</style>
+    
