@@ -35,6 +35,8 @@
 
     html {
         font-family: 'Monda', sans-serif;
+        align-self: center;
+        justify-self: center;
     }
 
     .title {
@@ -42,6 +44,7 @@
     }
 
     .container {
+        width: 90%;
         display: grid;
         grid-auto-flow: dense;
         grid-template-columns: 1fr ;
@@ -63,6 +66,8 @@
 
     .piece {
         width: 100%;
+        align-self: center;
+        justify-self: center;
     }
 
     .name {
@@ -72,13 +77,6 @@
         text-orientation: mixed;
     }
 
-    .right {
-        grid-area: right;
-        display: grid;
-        grid-template-columns: 7fr 1fr;
-        grid-template-areas:
-            "art        name";
-    }
 
     @media only screen and (max-width: 600px) {
 
