@@ -1,0 +1,58 @@
+html {
+    font-family: 'Monda', sans-serif;
+    align-self: center;
+    justify-self: center;
+}
+
+.title {
+    margin-left: 30px;
+}
+
+.container {
+    
+    display: grid;
+    grid-auto-flow: dense;
+    grid-template-columns: 1fr ;
+    grid-template-areas:
+        "left";
+    justify-items: center;
+}
+
+.left {
+    width: 80%;
+    grid-area: left;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "art ";
+}
+
+.art {
+    overflow: hidden;
+}
+
+.piece {
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+}
+
+.name {
+    align-self: center;
+    justify-self: left;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+.container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "left"
+        "right";
+}
+
+
+}

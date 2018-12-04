@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Monda" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../styles/mojoCenter.css"/>
     </head>
     <body>
     <div class="title">
@@ -14,15 +15,15 @@
     </div>
         <div class="container">
             <div class="left">
+                <div class="desc">
+                    <p>description - barber booking app in London.</p>
+                </div>
                 <div class="art">
                     <img class="piece" src="../img/mojo/mojoIphone/mojo1.png"/>
                 </div>
-                <div class="name">barber booking app in London.</div>
-
                 <div class="art">
                     <img class="piece" src="../img/mojo/mojoIphone/mojo2.png"/>
                 </div>
-                <div class="name"></div>
             </div>
             <p class="contact">
             <a href="mojo.html">back</a>
@@ -30,66 +31,3 @@
         </div>
     </body>
 </html>
-
-<style>
-
-    html {
-        font-family: 'Monda', sans-serif;
-    }
-
-    .title {
-        margin-left: 30px;
-    }
-
-    .container {
-        display: grid;
-        grid-auto-flow: dense;
-        grid-template-columns: 1fr ;
-        grid-template-areas:
-            "left";
-    }
-
-    .left {
-        grid-area: left;
-        display: grid;
-        grid-template-columns: 7fr 1fr;
-        grid-template-areas:
-            "art        name";
-    }
-
-    .art {
-        overflow: hidden;
-    }
-
-    .piece {
-        width: 100%;
-    }
-
-    .name {
-        align-self: center;
-        justify-self: left;
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-    }
-
-    .right {
-        grid-area: right;
-        display: grid;
-        grid-template-columns: 7fr 1fr;
-        grid-template-areas:
-            "art        name";
-    }
-
-    @media only screen and (max-width: 600px) {
-
-    .container {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "left"
-            "right";
-    }
-
-
-}
-</style>
-    
