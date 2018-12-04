@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Monda" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../../styles/images.css"/>
     </head>
     <body>
     <div class="title">
@@ -49,65 +50,3 @@
         
     </body>
 </html>
-
-<style>
-
-    html {
-        font-family: 'Monda', sans-serif;
-    }
-
-    .title {
-        margin-left: 30px;
-    }
-
-    .container {
-        display: grid;
-        grid-auto-flow: dense;
-        grid-template-columns: 1fr 1fr ;
-        grid-template-areas:
-            "left        right";
-    }
-
-    .left {
-        grid-area: left;
-        display: grid;
-        grid-template-columns: 7fr 1fr;
-        grid-template-areas:
-            "art        name";
-    }
-
-    .art {
-        overflow: hidden;
-    }
-
-    .piece {
-        width: 100%;
-    }
-
-    .name {
-        align-self: center;
-        justify-self: left;
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-    }
-
-    .right {
-        grid-area: right;
-        display: grid;
-        grid-template-columns: 7fr 1fr;
-        grid-template-areas:
-            "art        name";
-    }
-
-    @media only screen and (max-width: 600px) {
-
-    .container {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "left"
-            "right";
-    }
-
-
-}
-</style>
