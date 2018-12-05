@@ -82,6 +82,17 @@ let handleMousemove = (event) => {
     subTitle.style.color = `rgb(0, ${xAmount},${yAmount})`;
 };
 
+let orientation = (event) => {
+    let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    let h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    xAmount = Math.ceil(event.alpha / w * 255);
+    yAmount = Math.ceil(event.beta / h * 255);
+    // update color on mouse movement
+    subTitle.style.color = `rgb(0, ${xAmount},${yAmount})`;
+}
+
+window.addEventListener('deviceorientation', orientation);
+
 // add event listeners
 document.addEventListener('mousemove', handleMousemove);
 </script>
