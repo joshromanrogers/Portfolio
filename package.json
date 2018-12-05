@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/joshromanrogers/Portfolio/issues"
   },
-  "homepage": "https://github.com/joshromanrogers/Portfolio#readme"
+  "homepage": "https://github.com/joshromanrogers/Portfolio#readme",
+  "dependencies": {
+    "animejs": "^2.2.0"
+  }
 }
