@@ -12,7 +12,7 @@
             <div class="left">
                 <div class="title">
                     <h1>roman rogers</h1>
-                    <h3>creative developer</h3>
+                    <h3 id="subtitle">creative developer</h3>
                 </div>
                 <div class="work">
                     <p>
@@ -64,6 +64,27 @@
         </div>
     </body>
 </html>
+
+<script>
+
+// grab elements
+let subTitle = document.getElementById("subtitle");
+
+
+// find position of mouse on page
+let handleMousemove = (event) => {
+    // responsive percentage position multiplied up to and rounded to equal an rgb number (0-255)
+    let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    let h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    xAmount = Math.ceil(event.x / w * 255);
+    yAmount = Math.ceil(event.y / h * 255);
+    // update color on mouse movement
+    subTitle.style.color = `rgb(0, ${xAmount},${yAmount})`;
+};
+
+// add event listeners
+document.addEventListener('mousemove', handleMousemove);
+</script>
 
 <style>
 
