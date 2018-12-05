@@ -4,6 +4,7 @@
         <title> ~~ roman rogers ~~ </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./index.js" type="text/javascript"></script>
         <link href="https://fonts.googleapis.com/css?family=Monda" rel="stylesheet">
     </head>
     <body>
@@ -88,6 +89,7 @@ let orientation = (event) => {
     xAmount = Math.ceil(event.alpha / w * 255);
     yAmount = Math.ceil(event.beta / h * 255);
     // update color on mouse movement
+
     subTitle.style.color = `rgb(0, ${xAmount},${yAmount})`;
 }
 
