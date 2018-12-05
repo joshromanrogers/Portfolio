@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="./index.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Monda" rel="stylesheet">
     </head>
     <body>
@@ -12,7 +13,11 @@
 
             <div class="left">
                 <div class="title">
-                    <h1>roman rogers</h1>
+                    <h1 id="roman">
+                        <span class="text-wrapper">
+                            <span class="letters">roman rogers</span>
+                        </span>
+                    </h1>
                     <h3 id="subtitle">creative developer</h3>
                 </div>
                 <div class="work">
@@ -70,7 +75,27 @@
 
 // grab elements
 let subTitle = document.getElementById("subtitle");
+let roman = document.getElementById("roman");
+// wrap every letter in a span
+let rString = roman.textContent.split('').map((x) => `<span class='letter'>${x}</span>`);
 
+console.log(rString);
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.roman .letter',
+    rotateY: [-90, 0],
+    duration: 1300,
+    delay: function(el, i) {
+      return 45 * i;
+    }
+  }).add({
+    targets: '.roman',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
 
 // find position of mouse on page
 let handleMousemove = (event) => {
@@ -97,6 +122,8 @@ window.addEventListener('deviceorientation', orientation);
 
 // add event listeners
 document.addEventListener('mousemove', handleMousemove);
+
+
 </script>
 
 <style>
@@ -159,6 +186,27 @@ document.addEventListener('mousemove', handleMousemove);
     .right {
         visibility:hidden;
     }
+}
+
+#roman {
+  position: relative;
+  font-weight: 900;
+  font-size: 4em;
+}
+
+#roman .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+#roman .letter {
+  display: inline-block;
+  line-height: 1em;
+  transform-origin: 0 0;
 }
 
 </style>
