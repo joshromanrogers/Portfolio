@@ -4,21 +4,15 @@
         <title> ~~ roman rogers ~~ </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="./index.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Monda" rel="stylesheet">
     </head>
     <body>
         <div class="container">
-
             <div class="left">
                 <div class="title">
-                    <h1 id="roman">
-                        <span class="text-wrapper">
-                            <span class="letters">roman rogers</span>
-                        </span>
-                    </h1>
-                    <h3 id="subtitle">creative developer</h3>
+                    <h1 class="letters">roman rogers</h1>
+                    <h3 class="subtitle">creative developer</h3>
                 </div>
                 <div class="work">
                     <p>
@@ -71,30 +65,92 @@
     </body>
 </html>
 
-<script>
+<style>
 
-// grab elements
-let subTitle = document.getElementById("subtitle");
-let roman = document.getElementById("roman");
-// wrap every letter in a span
-let rString = roman.textContent.split('').map((x) => `<span class='letter'>${x}</span>`);
-
-console.log(rString);
-
-anime.timeline({loop: true})
-  .add({
-    targets: '.roman .letter',
-    rotateY: [-90, 0],
-    duration: 1300,
-    delay: function(el, i) {
-      return 45 * i;
+    html {
+        height: 100%;
+        background-color: #f9ecec;
+        font-family: 'Monda', sans-serif;
     }
-  }).add({
-    targets: '.roman',
-    opacity: 0,
+
+    .container {
+        display: grid;
+        height: 100%;
+        grid-auto-flow: dense;
+        grid-template-columns: 2fr 1.5fr;
+        grid-template-areas:
+            "left        right";
+        background-color: #F9ECEC;
+        color: #0f0f0f;
+    }
+
+    body {
+        margin: 0px;  
+    }
+
+    .desc {
+        color: #3c3838;
+    }
+
+    .left {
+        height: 100%;
+        grid-area: left;
+        margin-left: 30px;
+        display: grid;
+        grid-template-rows: 0.5 1 0.5;
+        grid-template-areas:
+            "title"
+            "work"
+            "contact";
+    }
+
+    .right {
+        grid-area: right;
+        align-self: center;
+    }
+
+    .contact {
+        align-self: end;
+    }
+
+    .word {
+        opacity: 0;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        .container {
+            grid-template-columns: 1fr 0fr;
+            grid-template-areas:
+                "left   right";
+        }
+
+        .right {
+            visibility: hidden;
+        }
+    }
+</style>
+
+<script>
+// grab elements
+let subTitle = document.querySelector('.subtitle');
+let roman = document.querySelector('.title .letters');
+// split every letter in text
+let splitLetters = roman.innerText.split('');
+// remove text from title
+roman.innerHTML = '';
+// wrap a span with class 'letter' around every letter and add back to title
+splitLetters.forEach((letter) => roman.innerHTML += `<span class="word">${letter}</span>`);
+console.log(roman);
+
+anime({
+    targets: '.title .letters .word',
     duration: 1000,
-    easing: "easeOutExpo",
-    delay: 1000
+    rotate: [360,0],
+    translateY: [300,0],
+	delay: function(el, index) { return index*100; },
+	easing: 'easeInQuart',
+	opacity: 1,		
   });
 
 // find position of mouse on page
@@ -125,89 +181,4 @@ document.addEventListener('mousemove', handleMousemove);
 
 
 </script>
-
-<style>
-
-    html {
-        height: 100%;
-        background-color: #f9ecec;
-        font-family: 'Monda', sans-serif;
-    }
-
-    .container {
-        display: grid;
-        height: 100%;
-        grid-auto-flow: dense;
-        grid-template-columns: 2fr 1.5fr ;
-        grid-template-areas:
-            "left        right";
-        background-color: #F9ECEC;
-        color: #0f0f0f;
-    }
-
-    body {
-        margin: 0px;
-        
-    }
-
-    .desc {
-        color: #3c3838;
-    }
-
-    .left {
-        height: 100%;
-        grid-area: left;
-        margin-left: 30px;
-        display: grid;
-        grid-template-rows: 0.5 1 0.5;
-        grid-template-areas:
-            "title"
-            "work"
-            "contact";
-    }
-
-    .right {
-        grid-area: right;
-        align-self: center;
-    }
-
-    .contact {
-        align-self: end;
-    }
-
-    @media only screen and (max-width: 600px) {
-
-    .container {
-        grid-template-columns: 1fr 0fr;
-        grid-template-areas:
-            "left   right";
-    }
-
-    .right {
-        visibility:hidden;
-    }
-}
-
-#roman {
-  position: relative;
-  font-weight: 900;
-  font-size: 4em;
-}
-
-#roman .text-wrapper {
-  position: relative;
-  display: inline-block;
-  padding-top: 0.2em;
-  padding-right: 0.05em;
-  padding-bottom: 0.1em;
-  overflow: hidden;
-}
-
-#roman .letter {
-  display: inline-block;
-  line-height: 1em;
-  transform-origin: 0 0;
-}
-
-</style>
     
