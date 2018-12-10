@@ -158,13 +158,13 @@
 <script>
 
 var referrer = document.referrer;
-console.log(referrer);
 
-if(!(referrer.includes("romanrogers"))){
 // grab elements
 let intro = document.querySelector('.intro');
 let subTitle = document.querySelector('.subtitle');
 let head = document.querySelector('.letters');
+
+if(!(referrer.includes("romanrogers"))){
 // split every letter in text
 let splitIntro = intro.innerText.split('');
 let splitSubTitle = subTitle.innerText.split('');
