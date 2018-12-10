@@ -159,6 +159,8 @@
 
 var referrer = document.referrer;
 console.log(referrer);
+
+if(!(referrer.includes("romanrogers"))){
 // grab elements
 let intro = document.querySelector('.intro');
 let subTitle = document.querySelector('.subtitle');
@@ -239,6 +241,8 @@ anime.timeline()
       easing: 'linear',
       opacity: 1,
   });
+
+  }
 
 // find position of mouse on page
 let handleMousemove = (event) => {
