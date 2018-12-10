@@ -156,15 +156,16 @@
 </style>
 
 <script>
-
+// entry point
 var referrer = document.referrer;
-console.log(referrer);
 
 // grab elements
 let intro = document.querySelector('.intro');
 let subTitle = document.querySelector('.subtitle');
 let head = document.querySelector('.letters');
-// split every letter in text
+
+if(!(referrer.includes("romanrogers"))){
+    // split every letter in text
 let splitIntro = intro.innerText.split('');
 let splitSubTitle = subTitle.innerText.split('');
 let splitLetters = head.innerText.split('');
@@ -240,6 +241,16 @@ anime.timeline()
       easing: 'linear',
       opacity: 1,
   });
+}
+ else {
+     document.querySelector('.work').style.opacity = "1";
+     document.querySelector('.word').style.opacity = "1";
+     document.querySelector('.contact').style.opacity = "1";
+     document.querySelector('.right').style.opacity = "1";
+     intro.style.opacity = "0";
+ };
+
+
 
 // find position of mouse on page
 let handleMousemove = (event) => {
