@@ -71,20 +71,21 @@ async function animeFunc() { await anime.timeline()
     opacity: 1,
 }).finished; }
 
+function spanLetter(word) {
+    // split every letter in text
+    let splitWord = word.innerText.split('');
+    // remove text from title
+    word.innerHTML = '';
+     // wrap a span with class 'letter' around every letter and add back to title
+    splitWord.forEach((letter) => word.innerHTML += `<span class="word">${letter}</span>`);
+}
+
 // if coming from external source do animation, if not bring opacity of items to 1 (don't animate)
 if(!(referrer.includes("romanrogers"))){
-    // split every letter in text
-    let splitIntro = intro.innerText.split('');
-    let splitSubTitle = subTitle.innerText.split('');
-    let splitLetters = head.innerText.split('');
-    // remove text from title
-    intro.innerHTML = '';
-    subTitle.innerHTML = '';
-    head.innerHTML = '';
-    // wrap a span with class 'letter' around every letter and add back to title
-    splitIntro.forEach((letter) => intro.innerHTML += `<span class="word">${letter}</span>`);
-    splitSubTitle.forEach((letter) => subTitle.innerHTML += `<span class="word">${letter}</span>`);
-    splitLetters.forEach((letter) => head.innerHTML += `<span class="word">${letter}</span>`);
+
+    spanLetter(intro);
+    spanLetter(subTitle);
+    spanLetter(head);
 
     animeFunc();
 }
