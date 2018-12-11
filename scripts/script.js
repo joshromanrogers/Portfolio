@@ -5,7 +5,9 @@ var referrer = document.referrer;
 let intro = document.querySelector('.intro');
 let subTitle = document.querySelector('.subtitle');
 let head = document.querySelector('.letters');
-
+if (document.readyState === "complete" || document.readyState === "loaded") {
+    console.log('document is already ready to go');
+}
 // function 
 async function animeFunc() { await anime.timeline()
     // intro 'roman rogers' in
@@ -82,7 +84,7 @@ function spanLetter(word) {
 
 // if coming from external source do animation, if not bring opacity of items to 1 (don't animate)
 if(!(referrer.includes("romanrogers"))){
-
+    
     spanLetter(intro);
     spanLetter(subTitle);
     spanLetter(head);
