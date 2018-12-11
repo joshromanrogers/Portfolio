@@ -6,6 +6,71 @@ let intro = document.querySelector('.intro');
 let subTitle = document.querySelector('.subtitle');
 let head = document.querySelector('.letters');
 
+// function 
+async function animeFunc() { await anime.timeline()
+    // intro 'roman rogers' in
+.add({
+    targets: '.intro .word',
+    translateX: [200,0],
+    translateY: [300,0],
+    rotate: [360,0],
+    opacity: [1,1],
+    easing: "easeOutExpo",
+    duration: 1200,
+    delay: function(el, i) {
+    return 300 + 30 * i;
+    }
+})
+    // intro 'roman rogers' out
+.add({
+    targets: '.intro .word',
+    translateX: [0,10],
+    translateY: [0,-100],
+    rotate: [0,-45],
+    opacity: [1,1],
+    easing: "easeInExpo",
+    duration: 1200,
+    delay: function(el, i) {
+    return 300 + 0 * i *0;
+    },
+})
+    // title in
+.add({
+    targets: '.title .letters .word',
+    duration: 1000,
+    delay: function(el, index) { return index*60; },
+    easing: 'easeInQuart',
+    opacity: 1,		
+})
+    // subtitle in
+.add({
+    targets: '.subtitle .word',
+    duration: 1000,
+    delay: function(el, index) { return index*30; },
+    easing: 'easeInQuart',
+    opacity: 1,	
+})
+.add({
+    targets: '.work',
+    duration: 1500,
+    delay: 500,
+    easing: 'linear',
+    opacity: 1,
+})
+.add({
+    targets: '.contact',
+    duration: 1500,
+    delay: 500,
+    easing: 'linear',
+    opacity: 1,
+})
+.add({
+    targets: '.right',
+    duration: 1500,
+    easing: 'linear',
+    opacity: 1,
+}).finished; }
+
 // if coming from external source do animation, if not bring opacity of items to 1 (don't animate)
 if(!(referrer.includes("romanrogers"))){
     // split every letter in text
@@ -21,69 +86,7 @@ if(!(referrer.includes("romanrogers"))){
     splitSubTitle.forEach((letter) => subTitle.innerHTML += `<span class="word">${letter}</span>`);
     splitLetters.forEach((letter) => head.innerHTML += `<span class="word">${letter}</span>`);
 
-    anime.timeline()
-        // intro 'roman rogers' in
-    .add({
-        targets: '.intro .word',
-        translateX: [200,0],
-        translateY: [300,0],
-        rotate: [360,0],
-        opacity: [1,1],
-        easing: "easeOutExpo",
-        duration: 1200,
-        delay: function(el, i) {
-        return 300 + 30 * i;
-        }
-    })
-        // intro 'roman rogers' out
-    .add({
-        targets: '.intro .word',
-        translateX: [0,10],
-        translateY: [0,-100],
-        rotate: [0,-45],
-        opacity: [1,1],
-        easing: "easeInExpo",
-        duration: 1200,
-        delay: function(el, i) {
-        return 300 + 0 * i *0;
-        },
-    })
-        // title in
-    .add({
-        targets: '.title .letters .word',
-        duration: 1000,
-        delay: function(el, index) { return index*60; },
-        easing: 'easeInQuart',
-        opacity: 1,		
-    })
-        // subtitle in
-    .add({
-        targets: '.subtitle .word',
-        duration: 1000,
-        delay: function(el, index) { return index*30; },
-        easing: 'easeInQuart',
-        opacity: 1,	
-    })
-    .add({
-        targets: '.work',
-        duration: 1500,
-        delay: 500,
-        easing: 'linear',
-        opacity: 1,
-    })
-    .add({
-        targets: '.contact',
-        duration: 1500,
-        delay: 500,
-        easing: 'linear',
-        opacity: 1,
-    })
-    .add({
-        targets: '.right',
-        duration: 1500,
-        easing: 'linear',
-        opacity: 1,
-    });
+    animeFunc();
 }
  else {
      document.querySelector('.work').style.opacity = "1";
