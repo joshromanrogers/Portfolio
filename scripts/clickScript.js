@@ -48,7 +48,6 @@
   // add's squareUp to square and then removes after times up
     function up() {
     let speed = checkSpeed();
-    console.log(speed);
     const time = speed;
     const square = randomSquare(squares);
     randomColor(square);
@@ -65,7 +64,6 @@
     function startGame() {
       if (!functionIsRunning) {
         functionIsRunning = true;
-        console.log(easy.checked);
         scoreBoard.textContent = 0;
         timeUp = false;
         score = 0;
